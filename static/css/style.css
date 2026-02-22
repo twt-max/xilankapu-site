@@ -1,0 +1,521 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f9f7f0;
+    color: #333;
+}
+
+/* 左侧导航 */
+#sidebar {
+    width: 180px;
+    background: #d9480f;
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#sidebar ul {
+    list-style: none;
+}
+
+.nav-item {
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: #34495e;
+    font-weight: bold;
+}
+
+/* 右侧内容区 */
+#content {
+    margin-left: 180px;
+    padding: 30px;
+    width: calc(100% - 180px);
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== 统一内容文本样式：历史起源 & 匠心工艺 ===== */
+.content-text {
+    color: #333333;
+    font-family: "SimSun", "FangSong", "KaiTi", "STSong", "Noto Serif CJK SC", serif;
+    line-height: 1.85;
+    font-size: 1.05rem;
+}
+
+.content-text h2 {
+    color: #C0392B;
+    font-family: "SimSun", "STSong", serif;
+    font-weight: bold;
+    margin: 25px 0 30px;
+    font-size: 1.9rem;
+    text-align: center;
+    border-bottom: 2px solid #d7ccc8;
+    padding-bottom: 12px;
+}
+
+.content-text h3 {
+    color: #D35400;
+    font-family: "FangSong", "KaiTi", "SimSun", serif;
+    font-weight: normal;
+    margin: 35px 0 18px;
+    font-size: 1.35rem;
+    letter-spacing: 1px;
+}
+
+.content-text p,
+.content-text li {
+    margin-bottom: 16px;
+    line-height: 1.8;
+}
+
+/* ===== 首页特殊样式 ===== */
+.hero-banner img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: block;
+}
+
+#home .text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 首页主标题 <h1>：红色古朴 */
+#home .text-content h1 {
+    color: #C0392B;
+    font-family: "SimSun", "STSong", serif;
+    font-weight: bold;
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+}
+
+/* 首页副标题 <h2>：深棕 + 底边线（原始风格） */
+#home .text-content h2 {
+    font-size: 1.3rem;
+    color: #5D4037;
+    margin-bottom: 16px;
+    font-weight: normal;
+    text-align: center;
+    border-bottom: 2px solid #d7ccc8;
+    padding-bottom: 8px;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+/* 首页段落：谚语、简介、引导 */
+#home .proverb,
+#home .intro,
+#home .guide {
+    font-family: "FangSong", "KaiTi", "SimSun", serif;
+}
+
+.proverb {
+    font-style: italic;
+    color: #C2185B;
+    margin: 12px 0 20px;
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+.intro {
+    color: #2E2929;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+}
+
+.guide {
+    color: #E64A19;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* 第二页（历史起源）图片 */
+.pattern-image img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 历史起源页：传说段落强调 */
+#definition p:nth-of-type(5),
+#definition p:nth-of-type(6) {
+    font-style: italic;
+    color: #5a5a5a;
+    background-color: #f9f5f0;
+    padding: 12px;
+    border-left: 3px solid #d7ccc8;
+    border-radius: 0 4px 4px 0;
+}
+
+/* ===== 匠心工艺：左文右图布局 ===== */
+.text-image-row {
+    display: flex;
+    gap: 30px;
+    margin: 10px 0;
+    align-items: flex-start;
+}
+
+.text-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.image-col {
+    flex: 1;
+    max-width: 45%;
+}
+
+.text-image-row img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: block;
+}
+
+/* 手机端响应式 */
+@media (max-width: 768px) {
+    .text-image-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .image-col {
+        max-width: 100%;
+    }
+}
+
+/* ========== 纹样密码 - 完全对齐前页字体 ========== */
+#patterns {
+    font-family: "SimSun", "FangSong", "KaiTi", "STSong", "Noto Serif CJK SC", serif;
+    color: #333333;
+    line-height: 1.85;
+    font-size: 1.05rem;
+}
+
+/* 主标题 h2：必须用宋体！和 .content-text h2 一致 */
+#patterns h2 {
+    color: #C0392B;
+    font-family: "SimSun", "STSong", serif; /* ← 关键修正：不再是 Microsoft YaHei！ */
+    font-weight: bold;
+    font-size: 1.9rem;
+    text-align: center;
+    border-bottom: 2px solid #d7ccc8;
+    padding-bottom: 12px;
+    margin: 25px 0 30px; /* 与 .content-text h2 的 margin 一致 */
+}
+
+/* 引言：继承父级字体，无需重复声明 font-family */
+#patterns .intro {
+    text-align: center;
+    margin: 16px auto 32px;
+    max-width: 800px;
+    color: #5D4037;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    /* font-family 已由 #patterns 继承，此处省略 */
+}
+
+/* 卡片内的 h3：与 .content-text h3 完全一致 */
+#patterns .card-content h3 {
+    color: #D35400;
+    font-family: "FangSong", "KaiTi", "SimSun", serif;
+    font-weight: normal;
+    font-size: 1.35rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 35px 0 18px; /* ← 恢复为与前页完全相同的边距 */
+}
+
+/* 卡片内的 p：继承父级字体 */
+#patterns .card-content p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #2E2929;
+    margin-bottom: 16px;
+    /* font-family 已由 #patterns 继承 */
+}
+
+/* 缺失图提示：也用宋体系 */
+#patterns .missing-img {
+    display: none;
+    text-align: center;
+    color: #999;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+    line-height: 1.4;
+    font-family: "SimSun", "FangSong", "KaiTi", "STSong", "Noto Serif CJK SC", serif;
+}
+
+/* 其他布局样式保持不变 */
+#patterns .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    padding: 0 10px;
+}
+
+#patterns .pattern-card {
+    width: 100%;
+    max-width: 360px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#patterns .pattern-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+#patterns .pattern-img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 18px;
+    border: 1px solid #e0d3c5;
+    border-radius: 6px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    #patterns .pattern-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    #patterns .pattern-grid {
+        grid-template-columns: 1fr;
+    }
+    #patterns .pattern-card {
+        max-width: 100%;
+        padding: 20px;
+    }
+    #patterns .pattern-img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* ========== 实践风采 - 六人感想卡片 ========== */
+
+#experience .intro {
+    color: #5D4037;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.reflection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.reflection-card {
+    background: #fff9f5;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid #d9480f;
+}
+
+.reflection-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.reflection-card h3 {
+    color: #C0392B;
+    font-family: "SimSun", "STSong", serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.reflection-card p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #2E2929;
+    margin: 0;
+}
+
+/* 响应式：平板一行两列 */
+@media (max-width: 992px) {
+    .reflection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+/* 响应式：手机一行一列 */
+@media (max-width: 576px) {
+    .reflection-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .reflection-card {
+        padding: 20px;
+    }
+}
+
+
+/* ========== 实践照片展示 ========== */
+
+#photos .intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: #5D4037;
+    font-size: 1.1rem;
+}
+
+.photo-group-title {
+    color: #C0392B;
+    font-family: "SimSun", "STSong", serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 40px 0 20px;
+    text-align: center;
+    position: relative;
+}
+
+.photo-group-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #d9480f;
+    margin: 8px auto;
+    border-radius: 1px;
+}
+
+/* 通用网格 */
+.photo-grid {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 0 10px;
+}
+
+/* 单图（全宽） */
+.photo-grid.single {
+    grid-template-columns: 1fr;
+}
+.photo-grid.single img {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+/* 双图 */
+.photo-grid.double {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 三图 */
+.photo-grid.triple {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 四图 */
+.photo-grid.quad {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* 特色大图（展厅全景） */
+.photo-grid.featured {
+    grid-template-columns: 1fr;
+}
+.photo-grid.featured img {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+/* 图片通用样式 */
+.photo-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    object-fit: cover;
+}
+
+.photo-grid img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 手机端优化 */
+@media (max-width: 768px) {
+    .photo-grid.triple,
+    .photo-grid.quad,
+    .photo-grid.double {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .photo-grid.triple,
+    .photo-grid.quad,
+    .photo-grid.double {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
